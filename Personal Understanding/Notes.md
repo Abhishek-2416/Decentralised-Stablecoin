@@ -18,3 +18,4 @@
 
 - If the collateral was created with the sole purpose of being a collateral it is a big red flag and to be a scam
 - But if that is the issue why do people make endogenous collateral stablecoins, they do this because they can scale at a much higher rate than others
+
