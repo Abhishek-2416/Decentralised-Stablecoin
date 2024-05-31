@@ -4,6 +4,7 @@ pragma solidity ^0.8.20;
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {DecentralisedStableCoin} from "./DecentralisedStableCoin.sol";
 import {ReentrancyGuard} from "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.4/interfaces/AggregatorV3Interface.sol";
 
 /**
  * @title DSC Engine
@@ -153,5 +154,8 @@ contract DSCEngine is ReentrancyGuard {
         }
     }
 
-    function getUSDValue(address token, uint256 amount) public view returns (uint256) {}
+    function getUSDValue(address token, uint256 amount) public view returns (uint256) {
+        AggregatorV3Interface priceFeed = AggregatorV3Interface(s_priceFeeds[token]);
+        (, int256 price,,,) = priceFeed.latestRoundData();
+    }
 }
